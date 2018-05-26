@@ -1,0 +1,4 @@
+.idea
+node_modules
+# specific project files
+src/main/resources/lançamento-conta-legado.json
