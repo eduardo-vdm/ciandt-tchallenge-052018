@@ -1,0 +1,15 @@
+{
+  "name": "data-generator",
+  "version": "1.0.0",
+  "description": "Random data generator for ciandt challenge application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "json-schema-faker": "^0.5.0-rc15",
+    "node-env-file": "^0.1.8"
+  }
+}

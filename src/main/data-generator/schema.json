@@ -1,0 +1,43 @@
+{
+  "type": "array",
+  "minItems": 500,
+  "maxItems": 500,
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "#/definitions/transactionId"
+      },
+      "account": {
+        "$ref": "#/definitions/accountId"
+      },
+      "value": {
+        "$ref": "#/definitions/amount"
+      },
+      "operation": {
+        "type": "string",
+        "pattern": "credit|debt"
+      }
+    },
+    "required": ["id", "account", "value", "operation"]
+  },
+  "definitions": {
+    "transactionId": {
+      "type": "integer",
+      "minimum": 1,
+      "unique": true,
+      "exclusiveMinimum": true
+    },
+    "accountId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "amount": {
+      "type": "number",
+      "minimum": -1000,
+      "maximum": 1000,
+      "multipleOf": 0.01
+    }
+  }
+}
