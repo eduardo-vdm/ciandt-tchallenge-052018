@@ -1,0 +1,9 @@
+### Application configuration.
+
+# port to serve the API
+server:
+  port: 8091
+
+# path to legacy data file (inside resources)
+json:
+  legacyDataFilePath: lançamento-conta-legado.json

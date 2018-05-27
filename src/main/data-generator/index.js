@@ -18,7 +18,7 @@ const data = jsf(schema);
 
 // export to file
 console.log(`Exporting ${data && data.length || 0} items to: ${process.env.EXPORT_FILE_PATH}`);
-fs.writeFile(process.env.EXPORT_FILE_PATH, JSON.stringify({ transactions: data }), (err) => {
+fs.writeFile(process.env.EXPORT_FILE_PATH, JSON.stringify(data), (err) => {
   if (err) throw err;
   console.log(`Done.`);
   process.exit();

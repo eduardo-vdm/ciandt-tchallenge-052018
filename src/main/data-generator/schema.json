@@ -1,7 +1,7 @@
 {
   "type": "array",
-  "minItems": 500,
-  "maxItems": 500,
+  "minItems": 20,
+  "maxItems": 20,
   "items": {
     "type": "object",
     "properties": {
