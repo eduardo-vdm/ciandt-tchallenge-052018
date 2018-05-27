@@ -1,7 +1,7 @@
 {
   "type": "array",
-  "minItems": 20,
-  "maxItems": 20,
+  "minItems": 100,
+  "maxItems": 100,
   "items": {
     "type": "object",
     "properties": {
@@ -17,9 +17,14 @@
       "operation": {
         "type": "string",
         "pattern": "credit|debt"
+      },
+      "datetime": {
+        "type": "string",
+        "format": "date-time",
+        "faker": "date.recent"
       }
     },
-    "required": ["id", "account", "value", "operation"]
+    "required": ["id", "account", "value", "operation", "datetime"]
   },
   "definitions": {
     "transactionId": {

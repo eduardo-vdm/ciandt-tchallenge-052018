@@ -2,7 +2,9 @@ package eddvdm.ciandt.api.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import eddvdm.ciandt.api.domain.Account;
 import eddvdm.ciandt.api.domain.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,22 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Imports and provides legacy transactions data from file.
  */
 @Service
 public class LegacyDataService {
+
+    @Autowired
+    private AccountService accountService;
+
+    @Autowired
+    private TransactionService transactionService;
+
     /**
      * Location to legacy data json file.
      */
@@ -53,6 +64,9 @@ public class LegacyDataService {
         // map legacy data to Transactions
         ObjectMapper jsonMapper = new ObjectMapper();
         setTransactions(jsonMapper.readValue(file, new TypeReference<List<Transaction>>(){}));
+
+        // persist into datasource
+        persistLegacyData();
     }
 
     /**
@@ -63,6 +77,27 @@ public class LegacyDataService {
     private File getLegacyDataFile() throws URISyntaxException {
         URL url = this.getClass().getClassLoader().getResource(jsonlegacyDataFilePath);
         return new File(url.toURI());
+    }
+
+    /**
+     * Insert legacy data into application's datasource.
+     */
+    private void persistLegacyData() {
+        // unique accounts ids to persist on accounts table
+        Set<Long> uniqueAccountsIds = new HashSet<Long>();
+
+        // create accounts and transactions in datasource
+        for (Transaction transaction : getTransactions()) {
+            // create account if it doesn't exist
+            if (!uniqueAccountsIds.contains(transaction.getAccount())) {
+                Account account = new Account(transaction.getAccount());
+                this.accountService.createAccount(account);
+
+                uniqueAccountsIds.add(transaction.getAccount());
+            }
+
+            this.transactionService.createTransaction(transaction);
+        }
     }
 
     /**

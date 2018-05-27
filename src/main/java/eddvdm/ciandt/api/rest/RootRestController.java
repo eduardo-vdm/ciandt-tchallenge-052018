@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping(value = "/")
-public class RootController extends AbstractController {
+public class RootRestController extends AbstractRestController {
 
     @RequestMapping(value = "")
     public String index() {

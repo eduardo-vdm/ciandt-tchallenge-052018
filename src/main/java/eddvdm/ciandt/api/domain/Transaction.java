@@ -1,21 +1,21 @@
 package eddvdm.ciandt.api.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Transaction entity.
  */
-@Entity
+@Entity(name = "Transaction")
 @Table(name = "transaction")
 public class Transaction {
 
     @Id
-    @GeneratedValue()
-//    @Column(nullable = false)
+//    @GeneratedValue()
     private long id;
 
     @Column(nullable = false)
-    private int account;
+    private long account;
 
     @Column(nullable = false)
     private float value;
@@ -23,14 +23,18 @@ public class Transaction {
     @Column(nullable = false)
     String operation;
 
+    @Column(nullable = false)
+    Date datetime;
+
     public Transaction() {
     }
 
-    public Transaction(long id, int account, float value, String operation) {
+    public Transaction(long id, long account, float value, String operation, Date datetime) {
         this.id = id;
         this.account = account;
         this.value = value;
         this.operation = operation;
+        this.datetime = datetime;
     }
 
     public long getId() {
@@ -41,11 +45,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public int getAccount() {
+    public long getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(long account) {
         this.account = account;
     }
 
@@ -63,5 +67,13 @@ public class Transaction {
 
     public void setOperation(String operation) {
         this.operation = operation;
+    }
+
+    public Date getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
     }
 }
