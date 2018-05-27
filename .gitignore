@@ -1,6 +1,11 @@
-.idea
+node_modules/
+bower_components/
+coverage/
+.idea/
+.webapp-tmp/
+webapp-dist/
 .gradle
-node_modules
+
 # specific project files
 build/resources/main/lan\303\247amento-conta-legado.json
 src/main/resources/lançamento-conta-legado.json
