@@ -1,19 +1,26 @@
 package eddvdm.ciandt.api.rest;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /*
  * Root endpoint for working status tests only.
  */
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "")
 public class RootRestController extends AbstractRestController {
 
-    @RequestMapping(value = "")
-    public String index() {
-        return "Nothing here.";
+    @GetMapping(value = "/v1", produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public
+    @ResponseBody
+    String index( HttpServletRequest request,
+                         HttpServletResponse response) {
+        return "";
     }
 
 }

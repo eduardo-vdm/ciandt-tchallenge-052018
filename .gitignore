@@ -5,6 +5,7 @@ coverage/
 .webapp-tmp/
 webapp-dist/
 .gradle
+out/
 
 # specific project files
 build/resources/main/lan\303\247amento-conta-legado.json

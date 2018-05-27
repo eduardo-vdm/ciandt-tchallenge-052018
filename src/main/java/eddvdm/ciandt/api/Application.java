@@ -20,15 +20,15 @@ public class Application {
      * @param ctx
      * @return
      */
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            System.out.println("List of transactions ids:");
-
-            for (Transaction t : LegacyDataService.getTransactions()) {
-                System.out.println(t.getId());
-            }
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//        return args -> {
+//            System.out.println("List of transactions ids:");
+//
+//            for (Transaction t : LegacyDataService.getTransactions()) {
+//                System.out.println(t.getId());
+//            }
+//        };
+//    }
 
 }
