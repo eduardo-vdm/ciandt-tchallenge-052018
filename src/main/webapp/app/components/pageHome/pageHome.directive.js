@@ -1,4 +1,4 @@
-export function PageHomeDirective(CONST) {
+export function PageHomeDirective() {
   'ngInject';
 
   let directive = {
@@ -6,17 +6,9 @@ export function PageHomeDirective(CONST) {
     templateUrl: 'app/components/pageHome/pageHome.html',
     scope: {
       accounts: '=',
-    },
-    link: linkFunc
+    }
   };
 
-  function linkFunc(scope) {
-
-    scope.setCurrentAccount = (account) => {
-      scope.$emit(CONST.EVENT.SET_CURRENT_ACCOUNT, account);
-    }
-
-  }
 
   return directive;
 }

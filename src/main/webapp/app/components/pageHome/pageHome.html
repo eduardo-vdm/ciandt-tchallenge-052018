@@ -1,16 +1,10 @@
 <md-grid-list class="accounts-list"
-  md-cols-xs="2" md-cols-sm="4" md-cols-md="6" md-cols-gt-md="8"
-  md-row-height-gt-md="1:1" md-row-height="2:2"
+  md-cols-xs="3" md-cols-sm="6" md-cols-md="9" md-cols-gt-md="12"
+  md-row-height-gt-md="1:1" md-row-height="1:1"
   md-gutter="12px" md-gutter-gt-sm="8px">
 
-  <md-grid-tile ng-repeat="account in accounts" class="gray" md-rowspan="1" md-colspan="2">
-    <md-card ng-click="setCurrentAccount(account);">
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">Account #<span ng-bind="account.id"></span></span>
-        </md-card-title-text>
-      </md-card-title>
-    </md-card>
+  <md-grid-tile ng-repeat="account in accounts" class="gray" md-rowspan="2" md-colspan="3">
+    <account-card account="account"></account-card>
   </md-grid-tile>
 
 </md-grid-list>

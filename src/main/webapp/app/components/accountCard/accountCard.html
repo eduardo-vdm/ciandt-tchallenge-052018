@@ -1,0 +1,9 @@
+<md-card class="account-card" ng-click="setCurrentAccount();">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Account #<span ng-bind="account.id"></span></span>
+      <span class="md-subhead" ng-if="lastTransaction">Last transaction: <span ng-bind="lastTransaction.datetime | date : 'shortDate'"></span></span>
+      <span class="md-subhead" ng-if="total">Total: <span ng-bind="total | currency"></span></span>
+    </md-card-title-text>
+  </md-card-title>
+</md-card>
