@@ -9,7 +9,7 @@ Technical challenge CI&T.
 - [Bower](https://bower.io) >= 1.8.x
 - [gulp.js](https://gulpjs.com) >= 3.9.x
 - JDK 1.8
-- [Grade 4.7](https://gradle.org/install/)
+- [Gradle 4.7](https://gradle.org/install/)
 - Ports `8091` (api backend) and `3000` (web frontend) must be available.
 
 ----
@@ -46,7 +46,7 @@ Both data generator, backend server and frontend webapp must be run:
 
 1. To generate the .json file with legacy data, run `./generate-data.sh` at the root of the project. 
 2. Run `./run-server.sh` in a terminal and serve the backend API at `http://localhost:8091/v1`.
-3. In a different terminal, run `./run-client.sh` to serve the frontend application at `http://localhost:8091/v1`.
+3. In a different terminal, run `./run-client.sh` to serve the frontend application at `http://localhost:3000`.
 
 ----
 
