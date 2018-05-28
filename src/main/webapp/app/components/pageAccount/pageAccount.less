@@ -1,0 +1,26 @@
+.page-account {
+  .md-list-item-text {
+    font-family: Monospaced, monospace;
+    display: flex;
+    flex-flow: row nowrap;
+    &> span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+
+      &:nth-of-type(2) {
+        width: 40%;
+        justify-content: flex-start;
+      }
+      &:nth-of-type(4) {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .list-header {
+    font-weight: 600 !important;
+    margin: 0;
+  }
+}

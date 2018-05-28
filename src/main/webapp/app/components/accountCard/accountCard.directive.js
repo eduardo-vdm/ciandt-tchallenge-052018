@@ -1,4 +1,4 @@
-export function AccountCardDirective(CONST, lodash) {
+export function AccountCardDirective(CONST, AccountUtil) {
   'ngInject';
 
   let directive = {
@@ -12,31 +12,15 @@ export function AccountCardDirective(CONST, lodash) {
 
   function linkFunc(scope) {
 
-    // console.log('acc-card', scope.account);
+    scope.lastTransaction = AccountUtil.getLastTransaction(scope.account);
+    scope.total = AccountUtil.getTotal(scope.account);
 
-    scope.lastTransaction = getLastTransaction();
-    scope.total = getTotal();
-
+    /**
+     * Sets currentAccount in parent scope.
+     */
     scope.setCurrentAccount = () => {
       scope.$emit(CONST.EVENT.SET_CURRENT_ACCOUNT, scope.account);
     };
-
-
-    function getLastTransaction() {
-      let lastDatetime = null;
-      if (scope.account && scope.account.transactions && scope.account.transactions.length) {
-        lastDatetime = lodash.last(lodash.sortBy(scope.account.transactions, (t) => Date.parse(t.datetime)));
-      }
-
-      return lastDatetime;
-    }
-
-    function getTotal() {
-      return scope.account && scope.account.transactions && lodash.reduce(scope.account.transactions, (total, t) => {
-        return total + ((t.operation === 'debt' && -1 || 1) * t.value);
-      }, 0.00) || 0.00;
-    }
-
   }
 
   return directive;

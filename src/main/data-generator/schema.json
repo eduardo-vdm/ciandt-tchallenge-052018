@@ -11,6 +11,10 @@
       "account": {
         "$ref": "#/definitions/accountId"
       },
+      "source": {
+	"type": "string",
+	"faker": "name.findName"
+      },
       "value": {
         "$ref": "#/definitions/amount"
       },
@@ -24,7 +28,7 @@
         "faker": "date.recent"
       }
     },
-    "required": ["id", "account", "value", "operation", "datetime"]
+    "required": ["id", "account", "source", "value", "operation", "datetime"]
   },
   "definitions": {
     "transactionId": {

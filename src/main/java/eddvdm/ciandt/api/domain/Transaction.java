@@ -24,16 +24,20 @@ public class Transaction {
     String operation;
 
     @Column(nullable = false)
+    String source;
+
+    @Column(nullable = false)
     Date datetime;
 
     public Transaction() {
     }
 
-    public Transaction(long id, long account, float value, String operation, Date datetime) {
+    public Transaction(long id, long account, float value, String operation, String source, Date datetime) {
         this.id = id;
         this.account = account;
         this.value = value;
         this.operation = operation;
+        this.source = source;
         this.datetime = datetime;
     }
 
@@ -75,5 +79,13 @@ public class Transaction {
 
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

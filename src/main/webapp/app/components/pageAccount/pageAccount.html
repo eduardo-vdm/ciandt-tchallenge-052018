@@ -1,3 +1,53 @@
-<div>
-  Account #<span ng-bind="account.id"></span>
+<div class="main" layout="row">
+  <div hide show-gt-sm flex></div>
+
+  <div flex="100" flex-gt-sm="80" flex-gt-md="70" flex-gt-lg="60" class="page-account">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Account #<span ng-bind="account.id"></span></span>
+        <span class="md-subhead" ng-if="lastTransaction">Last transaction: <span ng-bind="lastTransaction.datetime | date : 'medium' "></span></span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-list>
+      <md-list-item class="md-3-line">
+        <div class="md-list-item-text list-header">
+          <span>
+            <md-button
+              ng-class="{ 'md-accent': orderTransactionsBy == 'id' }"
+              ng-click="orderTransactionsBy = 'id'; orderTransactionsByReverse = !orderTransactionsByReverse;">#</md-button>
+          </span>
+          <span>
+            <md-button
+              ng-class="{ 'md-accent': orderTransactionsBy == 'source' }"
+              ng-click="orderTransactionsBy = 'source'; orderTransactionsByReverse = !orderTransactionsByReverse;">Source</md-button>
+          </span>
+          <span>
+            <md-button
+              ng-class="{ 'md-accent': orderTransactionsBy == 'datetime' }"
+              ng-click="orderTransactionsBy = 'datetime'; orderTransactionsByReverse = !orderTransactionsByReverse;">Date</md-button>
+          </span>
+          <span>
+            <md-button
+              ng-class="{ 'md-accent': orderTransactionsBy == 'value' }"
+              ng-click="orderTransactionsBy = 'value'; orderTransactionsByReverse = !orderTransactionsByReverse;">Value</md-button>
+          </span>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+      <md-list-item
+        class="md-3-line"
+        ng-repeat="transaction in account.transactions | orderBy: orderTransactions[orderTransactionsBy]:orderTransactionsByReverse">
+        <div class="md-list-item-text">
+          <span ng-bind="transaction.id"></span>
+          <span ng-bind="transaction.source"></span>
+          <span ng-bind="transaction.datetime | date : 'shortDate'"></span>
+          <span ng-bind="(getOperationValue(transaction)) | currency"></span>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </div>
+
+  <div hide show-gt-sm flex></div>
 </div>

@@ -9,6 +9,7 @@ import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 
 import { LegacyDataApiService } from "./components/legacyDataApi/legacyDataApi.service";
+import { AccountUtilService } from "./components/accountUtil/accountUtil.service";
 
 import { WaitingDataConnectionDlgDirective } from "./components/waitingDataConnectionDlg/waitingDataConnectionDlg.directive";
 import { PageHomeDirective } from "./components/pageHome/pageHome.directive";
@@ -33,6 +34,7 @@ angular.module('desafioCiandtMvp',
   .config(routerConfig)
   .run(runBlock)
   .service('LegacyDataApi', LegacyDataApiService)
+  .service('AccountUtil', AccountUtilService)
   .controller('MainController', MainController)
   .directive('waitingDataConnectionDlg', WaitingDataConnectionDlgDirective)
   .directive('pageHome', PageHomeDirective)
