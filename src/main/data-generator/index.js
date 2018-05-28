@@ -2,7 +2,6 @@
  * @file
  * Generates random finance data and export it to a file.
  */
-
 const jsf = require('json-schema-faker');
 const env = require('node-env-file');
 const fs = require('fs');
@@ -18,7 +17,7 @@ const data = jsf(schema);
 
 // export to file
 console.log(`Exporting ${data && data.length || 0} items to: ${process.env.EXPORT_FILE_PATH}`);
-fs.writeFile(process.env.EXPORT_FILE_PATH, JSON.stringify(data), (err) => {
+fs.writeFile(`${__dirname}/${process.env.EXPORT_FILE_PATH}`, JSON.stringify(data), (err) => {
   if (err) throw err;
   console.log(`Done.`);
   process.exit();
