@@ -9,7 +9,7 @@ Technical challenge CI&T.
 - [Bower](https://bower.io) >= 1.8.x
 - [gulp.js](https://gulpjs.com) >= 3.9.x
 - JDK 1.8
-- [Grade 4.7](https://gradle.org/install/)
+- [Gradle 4.7](https://gradle.org/install/)
 - Ports `8091` (api backend) and `3000` (web frontend) must be available.
 
 ----
