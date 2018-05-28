@@ -1,13 +1,41 @@
-<div layout="vertical" layout-fill>
+<div class="main" layout="row">
 
-  <md-content>
-    <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </header>
+  <div hide show-gt-sm flex></div>
 
-    <section class="jumbotron">
-      <h1>Nothing here yet.</h1>
-    </section>
-  </md-content>
+  <md-card class="main-container" flex="100" flex-gt-sm="80" flex-gt-md="65" flex-gt-lg="50">
+
+    <!-- Header Bar -->
+    <md-toolbar class="md-hue-1">
+      <div layout="row">
+        <md-toolbar-filler layout="row" layout-align="center center">
+          <img src="assets/images/logo-ciandt.png" class="toolbar-logo" alt="">
+        </md-toolbar-filler>
+        <h2 class="md-toolbar-tools">
+          <span>CI&T Technical Challenge</span>
+        </h2>
+      </div>
+    </md-toolbar>
+
+    <!-- Nav Bar -->
+    <md-nav-bar
+      md-no-ink-bar="disableInkBar"
+      md-selected-nav-item="currentPage"
+      nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-click="goTo('home')" name="home">
+        Home
+      </md-nav-item>
+      <md-nav-item md-nav-click="goTo('account')" name="account" ng-disabled="!currentAccount">
+        Account <span ng-show="!!currentAccount" ng-bind="'#' + currentAccount.id"></span>
+      </md-nav-item>
+    </md-nav-bar>
+
+    <!-- Content -->
+    <md-content class="md-padding main-content" cg-busy="loading">
+      <page-home ng-if="currentPage === 'home'" accounts="allAccounts"></page-home>
+      <page-account ng-if="currentPage === 'account'" account="currentAccount"></page-account>
+    </md-content>
+  </md-card>
+
+  <div hide show-gt-sm flex></div>
 
 </div>

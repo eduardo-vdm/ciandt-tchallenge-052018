@@ -1,15 +1,19 @@
-export function WaitingDataConnectionDlgDirective($rootScope, LegacyDataApi, $mdDialog) {
+export function WaitingDataConnectionDlgDirective(
+  $rootScope,
+  $document,
+  LegacyDataApi,
+  $mdDialog) {
   'ngInject';
 
   let directive = {
     restrict: 'E',
-    link: linkFunc,
+    link: linkFunc
   };
 
   function linkFunc(scope) {
-    // The dialog object
+    // the dialog object
     scope.dialog = null;
-    // check connection interval
+    // check connection interval id
     scope.checkInterval = null;
 
     // Watch at $rootScope if API is available
@@ -51,10 +55,10 @@ export function WaitingDataConnectionDlgDirective($rootScope, LegacyDataApi, $md
     function createDialog() {
       return $mdDialog.show({
         templateUrl: 'app/components/waitingDataConnectionDlg/waitingDataConnectionDlg.html',
-        parent: angular.element(document.body),
+        parent: angular.element($document.body),
         // targetEvent: ev,
         clickOutsideToClose:true,
-        fullscreen: true,
+        fullscreen: true
       });
     }
   }

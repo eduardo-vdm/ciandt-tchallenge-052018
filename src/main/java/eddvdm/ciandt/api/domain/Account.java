@@ -16,10 +16,8 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Account {
     @Id
-//    @GeneratedValue()
     private long id;
 
-//    private List<Transaction> transactions;
     @OneToMany(
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY,
@@ -35,11 +33,6 @@ public class Account {
         this.id = id;
     }
 
-//    public Account(long id, List<Transaction> transactions) {
-//        this.id = id;
-//        this.transactions = transactions;
-//    }
-
     public long getId() {
         return id;
     }
@@ -48,11 +41,11 @@ public class Account {
         this.id = id;
     }
 
-//    public List<Transaction> getTransactions() {
-//        return transactions;
-//    }
-//
-//    public void setTransactions(List<Transaction> transactions) {
-//        this.transactions = transactions;
-//    }
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }

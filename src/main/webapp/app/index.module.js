@@ -10,9 +10,9 @@ import { MainController } from './main/main.controller';
 
 import { LegacyDataApiService } from "./components/legacyDataApi/legacyDataApi.service";
 
-import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { WaitingDataConnectionDlgDirective } from "./components/waitingDataConnectionDlg/waitingDataConnectionDlg.directive";
-
+import { PageHomeDirective } from "./components/pageHome/pageHome.directive";
+import { PageAccountDirective } from "./components/pageAccount/pageAccount.directive";
 
 angular.module('desafioCiandtMvp',
   ['ngAnimate',
@@ -23,7 +23,7 @@ angular.module('desafioCiandtMvp',
     'ngResource',
     'ui.router',
     'ngMaterial',
-    'toastr']
+    'cgBusy']
 ) .constant('moment', moment)
   .constant('CONST', CONSTANTS)
   .config(config)
@@ -32,5 +32,6 @@ angular.module('desafioCiandtMvp',
   .run(runBlock)
   .service('LegacyDataApi', LegacyDataApiService)
   .controller('MainController', MainController)
-  .directive('acmeNavbar', NavbarDirective)
-  .directive('waitingDataConnectionDlg', WaitingDataConnectionDlgDirective);
+  .directive('waitingDataConnectionDlg', WaitingDataConnectionDlgDirective)
+  .directive('pageHome', PageHomeDirective)
+  .directive('pageAccount', PageAccountDirective);
